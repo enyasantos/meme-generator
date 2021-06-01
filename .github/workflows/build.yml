@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+env:
+  REACT_APP_IMGFLIP_USERNAME: ${{ secrets.REACT_APP_IMGFLIP_USERNAME }}
+  REACT_APP_IMGFLIP_PASSWORD: ${{ secrets.REACT_APP_IMGFLIP_PASSWORD }}
+
 jobs:
   deploy:
     runs-on: ubuntu-18.04
