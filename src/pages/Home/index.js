@@ -9,8 +9,8 @@ export default function Home() {
 
     const [templates, setTemplates] = useState([]);
     const [selectedTemplate, setSelectedTemplate] = useState(null);
-    const [ boxes, setBoxes ] = useState([]);
-    const [ generetadMeme, setGeneratedMeme] = useState(null);
+    const [boxes, setBoxes] = useState([]);
+    const [generetadMeme, setGeneratedMeme] = useState(null);
 
     //currying -> função que retorna outra função
     const handleInputChange = (index) => (e) => {
@@ -30,7 +30,7 @@ export default function Home() {
 
         const response = await fetch(`https://api.imgflip.com/caption_image?${params}`);
 
-        const { data: { url }} = await response.json();
+        const { data: { url } } = await response.json();
 
         setGeneratedMeme(url);
     };
@@ -60,7 +60,7 @@ export default function Home() {
             const { data: { memes } } = await response.json();
             setTemplates(memes);
         })();
-    },[])
+    }, [])
 
     return (
         <Wrapper>
@@ -68,16 +68,16 @@ export default function Home() {
             <Card>
                 {generetadMeme && (
                     <>
-                        <img src={generetadMeme} alt="Generated meme"/>
-                        <Button 
-                            type="submit" 
+                        <img src={generetadMeme} alt="Generated meme" />
+                        <Button
+                            type="submit"
                             onClick={e => handleDownloadImage(e)}
-                            style={{ margin: '10px 0'}}
+                            style={{ margin: '10px 0' }}
                         >
                             Baixar meme
                         </Button>
-                        <Button 
-                            type="submit" 
+                        <Button
+                            type="submit"
                             onClick={e => handleReset(e)}
                         >
                             Criar outro meme
@@ -103,24 +103,24 @@ export default function Home() {
                         {selectedTemplate &&
                             <Preview>
                                 <h3>Preview do meme</h3>
-                                <img src={selectedTemplate.url} alt={selectedTemplate.name}/>
+                                <img src={selectedTemplate.url} alt={selectedTemplate.name} />
                             </Preview>
                         }
-        
-                        {selectedTemplate && 
+
+                        {selectedTemplate &&
                             <>
-                            <h2>Textos</h2>
-                            <Form onSubmit={e => handleSubmit(e)}>
-                                {(new Array(selectedTemplate.box_count).fill('').map((_, index) => (
-                                    <input 
-                                        key={String(Math.random())}
-                                        placeholder={`Texto ${index + 1}`} 
-                                        onChange={handleInputChange(index)}
-                                    />
-                                )))}
-        
-                                <Button type="submit">GeneretaMyMeme</Button>
-                            </Form>
+                                <h2>Textos</h2>
+                                <Form onSubmit={e => handleSubmit(e)}>
+                                    {(new Array(selectedTemplate.box_count).fill('').map((_, index) => (
+                                        <input
+                                            key={String(Math.random())}
+                                            placeholder={`Texto ${index + 1}`}
+                                            onChange={handleInputChange(index)}
+                                        />
+                                    )))}
+
+                                    <Button type="submit">GeneretaMyMeme</Button>
+                                </Form>
                             </>
                         }
                     </>

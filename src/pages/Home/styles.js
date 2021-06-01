@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div `
+export const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     margin: 30px 0;
@@ -10,13 +10,13 @@ export const Wrapper = styled.div `
     justify-content: center;
 `;
 
-export const Logo = styled.img `
+export const Logo = styled.img`
     width: 160px;
     height: auto;
     margin-bottom: 20px;
 `;
 
-export const Card = styled.div `
+export const Card = styled.div`
     background: #FFFFFF;
     width: 550px;
     border-radius: 8px;
@@ -29,9 +29,14 @@ export const Card = styled.div `
         color: #26333D;
         margin-bottom: 10px;
     }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 `
 
-export const Templates = styled.div `
+export const Templates = styled.div`
     width: 100%;
     height: 90px;
     background: #eee;
