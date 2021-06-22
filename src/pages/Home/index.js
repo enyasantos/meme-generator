@@ -80,7 +80,7 @@ export default function Home() {
                             type="submit"
                             onClick={e => handleReset(e)}
                         >
-                            Criar outro meme
+                            Criar outro
                         </Button>
                     </>
                 )}
